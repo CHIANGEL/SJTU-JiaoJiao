@@ -19,7 +19,9 @@ import { InfoComponent } from '../info/info.component';
 import { InMemoryDataService } from '../inmemory-data.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WebsiteComponent } from './website.component';
-import { CallbackComponent } from '../callback/callback.component';
+import { AuthService } from '../auth.service';
+import { BuyInfoComponent } from '../info/buy-info/buy-info.component';
+import { SellInfoComponent } from '../info/sell-info/sell-info.component';
 
 describe('WebsiteComponent', () => {
   let component: WebsiteComponent;
@@ -32,20 +34,21 @@ describe('WebsiteComponent', () => {
         UserDetailComponent,
         UserComponent,
         InfoComponent,
-        CallbackComponent,
         InfoDetailComponent,
         LoginComponent,
         DashboardComponent,
         WebsiteComponent,
         ActivityComponent,
         InfoStatisticComponent,
-        ActivitydetailComponent
+        ActivitydetailComponent,
+        SellInfoComponent,
+        BuyInfoComponent
       ],
-      imports: [   
-    //    DelonAuthModule,
+      imports: [
+        //    DelonAuthModule,
         ReactiveFormsModule,
         BrowserModule,
-        AppRoutingModule,    
+        AppRoutingModule,
         NgZorroAntdModule,
         FormsModule,
         NgxEchartsModule,
@@ -65,7 +68,11 @@ describe('WebsiteComponent', () => {
   });
 
   it('should create', () => {
+    const service: AuthService = TestBed.get(AuthService);
+    service.login({ token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NjMzMzk3MDYsImlkIjozLCJyb2xlIjoyfQ.woB67gYA8hTMljeg6lqwG_3fSJm4Q7SD6Ln8w2Ol4xk' });
+
     expect(component).toBeTruthy();
     component.submitForm();
+    component.update();
   });
 });

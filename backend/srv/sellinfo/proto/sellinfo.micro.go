@@ -37,6 +37,7 @@ type SellInfoService interface {
 	Query(ctx context.Context, in *SellInfoQueryRequest, opts ...client.CallOption) (*SellInfoMsg, error)
 	Create(ctx context.Context, in *SellInfoCreateRequest, opts ...client.CallOption) (*SellInfoCreateResponse, error)
 	Find(ctx context.Context, in *SellInfoFindRequest, opts ...client.CallOption) (*SellInfoFindResponse, error)
+	Update(ctx context.Context, in *SellInfoUpdateRequest, opts ...client.CallOption) (*SellInfoUpdateResponse, error)
 }
 
 type sellInfoService struct {
@@ -87,12 +88,23 @@ func (c *sellInfoService) Find(ctx context.Context, in *SellInfoFindRequest, opt
 	return out, nil
 }
 
+func (c *sellInfoService) Update(ctx context.Context, in *SellInfoUpdateRequest, opts ...client.CallOption) (*SellInfoUpdateResponse, error) {
+	req := c.c.NewRequest(c.name, "SellInfo.Update", in)
+	out := new(SellInfoUpdateResponse)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // Server API for SellInfo service
 
 type SellInfoHandler interface {
 	Query(context.Context, *SellInfoQueryRequest, *SellInfoMsg) error
 	Create(context.Context, *SellInfoCreateRequest, *SellInfoCreateResponse) error
 	Find(context.Context, *SellInfoFindRequest, *SellInfoFindResponse) error
+	Update(context.Context, *SellInfoUpdateRequest, *SellInfoUpdateResponse) error
 }
 
 func RegisterSellInfoHandler(s server.Server, hdlr SellInfoHandler, opts ...server.HandlerOption) error {
@@ -100,6 +112,7 @@ func RegisterSellInfoHandler(s server.Server, hdlr SellInfoHandler, opts ...serv
 		Query(ctx context.Context, in *SellInfoQueryRequest, out *SellInfoMsg) error
 		Create(ctx context.Context, in *SellInfoCreateRequest, out *SellInfoCreateResponse) error
 		Find(ctx context.Context, in *SellInfoFindRequest, out *SellInfoFindResponse) error
+		Update(ctx context.Context, in *SellInfoUpdateRequest, out *SellInfoUpdateResponse) error
 	}
 	type SellInfo struct {
 		sellInfo
@@ -124,78 +137,6 @@ func (h *sellInfoHandler) Find(ctx context.Context, in *SellInfoFindRequest, out
 	return h.SellInfoHandler.Find(ctx, in, out)
 }
 
-// Client API for Content service
-
-type ContentService interface {
-	Create(ctx context.Context, in *ContentCreateRequest, opts ...client.CallOption) (*ContentCreateResponse, error)
-	Delete(ctx context.Context, in *ContentDeleteRequest, opts ...client.CallOption) (*ContentDeleteResponse, error)
-}
-
-type contentService struct {
-	c    client.Client
-	name string
-}
-
-func NewContentService(name string, c client.Client) ContentService {
-	if c == nil {
-		c = client.NewClient()
-	}
-	if len(name) == 0 {
-		name = "content"
-	}
-	return &contentService{
-		c:    c,
-		name: name,
-	}
-}
-
-func (c *contentService) Create(ctx context.Context, in *ContentCreateRequest, opts ...client.CallOption) (*ContentCreateResponse, error) {
-	req := c.c.NewRequest(c.name, "Content.Create", in)
-	out := new(ContentCreateResponse)
-	err := c.c.Call(ctx, req, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *contentService) Delete(ctx context.Context, in *ContentDeleteRequest, opts ...client.CallOption) (*ContentDeleteResponse, error) {
-	req := c.c.NewRequest(c.name, "Content.Delete", in)
-	out := new(ContentDeleteResponse)
-	err := c.c.Call(ctx, req, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-// Server API for Content service
-
-type ContentHandler interface {
-	Create(context.Context, *ContentCreateRequest, *ContentCreateResponse) error
-	Delete(context.Context, *ContentDeleteRequest, *ContentDeleteResponse) error
-}
-
-func RegisterContentHandler(s server.Server, hdlr ContentHandler, opts ...server.HandlerOption) error {
-	type content interface {
-		Create(ctx context.Context, in *ContentCreateRequest, out *ContentCreateResponse) error
-		Delete(ctx context.Context, in *ContentDeleteRequest, out *ContentDeleteResponse) error
-	}
-	type Content struct {
-		content
-	}
-	h := &contentHandler{hdlr}
-	return s.Handle(s.NewHandler(&Content{h}, opts...))
-}
-
-type contentHandler struct {
-	ContentHandler
-}
-
-func (h *contentHandler) Create(ctx context.Context, in *ContentCreateRequest, out *ContentCreateResponse) error {
-	return h.ContentHandler.Create(ctx, in, out)
-}
-
-func (h *contentHandler) Delete(ctx context.Context, in *ContentDeleteRequest, out *ContentDeleteResponse) error {
-	return h.ContentHandler.Delete(ctx, in, out)
+func (h *sellInfoHandler) Update(ctx context.Context, in *SellInfoUpdateRequest, out *SellInfoUpdateResponse) error {
+	return h.SellInfoHandler.Update(ctx, in, out)
 }

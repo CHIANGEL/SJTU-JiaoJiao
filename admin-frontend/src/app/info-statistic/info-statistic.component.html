@@ -1,12 +1,35 @@
 
         <div class='outer-div' id='fdg'>
-          <div echarts theme="dark"  class= 'tpc'[loading]="true" [options]="fdgoption"></div>
+          <div echarts (chartDblClick)="clickForce($event)"	theme="dark"  class= 'tpc'[loading]="true" [options]="fdgoption"></div>
       </div>
       <div class='outer-div' id='good'>
-        <div echarts theme="dark"  class= 'tpc'[loading]="true" [options]="goodoption"></div>
+        <div echarts theme="dark" 
+        (chartBrushSelected)="onBrushSelected($event)" class= 'tpc'[loading]="true" [options]="goodoption"></div>
     </div>
         <div class='outer-div' id='cld'>
-            <div echarts theme="dark" class= 'tpc'[loading]="true" [options]="cldoption">
+            <div *ngIf="!selectedInfo || selectedInfo.length==0" echarts theme="dark" class= 'tpc'[loading]="true" [options]="cldoption">
+            </div>            
+            <div *ngIf="selectedInfo && selectedInfo.length!=0">
+          <nz-table #headerTable [nzData]="selectedInfo" [nzPageSize]="10" [nzScroll]="{ y: '500px' }">
+            <thead>
+              <tr>
+                <th nzWidth="100px" >交易ID</th>
+                <th nzWidth="100px">标签名称</th>
+                <th>价格</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of headerTable.data">
+                <td>
+                   <a routerLink="/info/buyInfo/{{data[2]}}">
+                    {{ data[2] }}
+                    </a>
+                  </td>
+                <td>{{ data[0] }}</td>
+                <td>{{ data[1] }}</td>
+              </tr>
+            </tbody>
+          </nz-table>    
             </div>
         </div>
 
@@ -16,7 +39,12 @@
           </div>
 
         
-        <div class='outer-div' id='lq'>
-          <div echarts theme="dark" class='btc' [loading]="true" [options]="lqoption"></div>
+        <div class='outer-div' id='lq'>    
+          <div echarts theme="dark" class='btc' [loading]="true" [options]="lqoption">
+            </div>
+            <button id='pause' [nzSize]="'small'" nz-button nzType="default" (click) ="pauseLine()">
+              <i nz-icon *ngIf='!pl' nzType="pause"></i>
+              <i nz-icon *ngIf='pl' nzType="caret-right"></i>
+            </button>
         </div>
         

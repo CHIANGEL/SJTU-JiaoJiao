@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InfoDetailComponent, formatDate } from './infodetail.component';
+import { InfoDetailComponent} from './infodetail.component';
 
 import { ActivitydetailComponent } from '../activitydetail/activitydetail.component';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
@@ -21,7 +21,11 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InfoComponent } from '../info/info.component';
 import { InMemoryDataService } from '../inmemory-data.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CallbackComponent } from '../callback/callback.component';
+import { AuthService } from '../auth.service';
+import { User } from '../entity/user';
+import { SellInfoComponent } from '../info/sell-info/sell-info.component';
+import { BuyInfoComponent } from '../info/buy-info/buy-info.component';
+import { sellInfo } from '../entity/info';
 
 describe('InfodetailComponent', () => {
   let component: InfoDetailComponent;
@@ -36,18 +40,19 @@ describe('InfodetailComponent', () => {
         InfoComponent,
         InfoDetailComponent,
         LoginComponent,
-        CallbackComponent,
         DashboardComponent,
         WebsiteComponent,
         ActivityComponent,
         InfoStatisticComponent,
-        ActivitydetailComponent
+        ActivitydetailComponent,
+        SellInfoComponent,
+        BuyInfoComponent
       ],
-      imports: [   
-    //    DelonAuthModule,
+      imports: [
+        //    DelonAuthModule,
         ReactiveFormsModule,
         BrowserModule,
-        AppRoutingModule,    
+        AppRoutingModule,
         NgZorroAntdModule,
         FormsModule,
         NgxEchartsModule,
@@ -67,15 +72,25 @@ describe('InfodetailComponent', () => {
   });
 
   it('should create', () => {
+    const service: AuthService = TestBed.get(AuthService);
+    service.login({ token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NjMzMzk3MDYsImlkIjozLCJyb2xlIjoyfQ.woB67gYA8hTMljeg6lqwG_3fSJm4Q7SD6Ln8w2Ol4xk' });
+
     expect(component).toBeTruthy();
     //create
     setInterval(()=> {},1000);
-    const now =new Date(1997, 9, 3);
-    expect(typeof(formatDate([{name: now.toString(),value: 
-      [[now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'), 1.5]
-    }]))).toEqual('string');
-    component.save();
     component.goBack();
-    expect(typeof(component.randomData().name)).toEqual('string');
+    expect(component.stringToDate(1563134054)).toEqual('2019-07-15 03:54:14');
+    component.type = 'sellInfo';
+    component.getinfo();
+    component.type = 'buyInfo';
+    component.getinfo();
+    component.info = new sellInfo();
+    component.info.contentID= '1';
+    component.getContent();
+    component.deadLine=new Date(1563134051000);
+    component.save();    
+    component.type = 'sellInfo';
+    component.save();    
+
   });
 });

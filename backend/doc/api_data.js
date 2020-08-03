@@ -42,7 +42,7 @@ define({ "api": [
             "type": "--",
             "optional": false,
             "field": "Response",
-            "description": "<p>see <a href=\"#api-Service-auth_Auth_Auth\">Auth service</a></p>"
+            "description": "<p>see <a href=\"#api-Service-Auth_Auth\">Auth service</a></p>"
           }
         ]
       }
@@ -56,18 +56,336 @@ define({ "api": [
             "field": "AuthServiceDown",
             "description": "<p>Auth service down</p>"
           }
+        ],
+        "Error 400": [
+          {
+            "group": "Error 400",
+            "optional": false,
+            "field": "InvalidParam",
+            "description": "<p>Invalid param</p>"
+          }
         ]
       }
     },
-    "filename": "./api/auth/main.go",
+    "filename": "api/auth/main.go",
     "groupTitle": "Auth"
   },
   {
+    "type": "post",
+    "url": "/avatar",
+    "title": "AddAvatar",
+    "version": "1.0.0",
+    "group": "Avatar",
+    "permission": [
+      {
+        "name": "self/admin"
+      }
+    ],
+    "name": "AddAvatar",
+    "description": "<p>Add avatar</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "--",
+            "optional": false,
+            "field": "Param",
+            "description": "<p>see <a href=\"#api-Service-Avatar_Create\">Avatar Service</a> <br> Max size is 5M</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Response",
+            "optional": false,
+            "field": "response",
+            "description": "<p>see <a href=\"#api-Service-Avatar_Create\">Avatar Service</a></p>"
+          }
+        ]
+      }
+    },
+    "filename": "api/avatar/main.go",
+    "groupTitle": "Avatar",
+    "error": {
+      "fields": {
+        "Error 400": [
+          {
+            "group": "Error 400",
+            "optional": false,
+            "field": "InvalidParam",
+            "description": "<p>Invalid param</p>"
+          }
+        ],
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "optional": false,
+            "field": "UserServiceDown",
+            "description": "<p>User service down</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "post",
+    "url": "/buyInfo",
+    "title": "AddBuyInfo",
+    "version": "1.0.0",
+    "group": "BuyInfo",
+    "permission": [
+      {
+        "name": "self/admin"
+      }
+    ],
+    "name": "AddBuyInfo",
+    "description": "<p>Add buy info</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "--",
+            "optional": false,
+            "field": "Param",
+            "description": "<p>see <a href=\"#api-Service-BuyInfo_Create\">BuyInfo Service</a></p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Response",
+            "optional": false,
+            "field": "response",
+            "description": "<p>see <a href=\"#api-Service-BuyInfo_Create\">BuyInfo Service</a></p>"
+          }
+        ]
+      }
+    },
+    "filename": "api/buyinfo/main.go",
+    "groupTitle": "BuyInfo",
+    "error": {
+      "fields": {
+        "Error 400": [
+          {
+            "group": "Error 400",
+            "optional": false,
+            "field": "InvalidParam",
+            "description": "<p>Invalid param</p>"
+          }
+        ],
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "optional": false,
+            "field": "BuyInfoServiceDown",
+            "description": "<p>BuyInfo service down</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "get",
+    "url": "/buyInfo",
+    "title": "FindBuyInfo",
+    "version": "1.0.0",
+    "group": "BuyInfo",
+    "permission": [
+      {
+        "name": "none"
+      }
+    ],
+    "name": "FindBuyInfo",
+    "description": "<p>Find buy info</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "--",
+            "optional": false,
+            "field": "Param",
+            "description": "<p>see <a href=\"#api-Service-BuyInfo_Find\">BuyInfo Service</a></p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Response",
+            "optional": false,
+            "field": "response",
+            "description": "<p>see <a href=\"#api-Service-BuyInfo_Find\">BuyInfo Service</a></p>"
+          }
+        ]
+      }
+    },
+    "filename": "api/buyinfo/main.go",
+    "groupTitle": "BuyInfo",
+    "error": {
+      "fields": {
+        "Error 400": [
+          {
+            "group": "Error 400",
+            "optional": false,
+            "field": "InvalidParam",
+            "description": "<p>Invalid param</p>"
+          }
+        ],
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "optional": false,
+            "field": "BuyInfoServiceDown",
+            "description": "<p>BuyInfo service down</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "get",
+    "url": "/buyInfo/:buyInfoID",
+    "title": "GetBuyInfo",
+    "version": "1.0.0",
+    "group": "BuyInfo",
+    "permission": [
+      {
+        "name": "none"
+      }
+    ],
+    "name": "GetBuyInfo",
+    "description": "<p>Get buy info</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "--",
+            "optional": false,
+            "field": "Param",
+            "description": "<p>see <a href=\"#api-Service-BuyInfo_Query\">BuyInfo Service</a></p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Response",
+            "optional": false,
+            "field": "response",
+            "description": "<p>see <a href=\"#api-Service-BuyInfo_Query\">BuyInfo Service</a></p>"
+          }
+        ]
+      }
+    },
+    "filename": "api/buyinfo/main.go",
+    "groupTitle": "BuyInfo",
+    "error": {
+      "fields": {
+        "Error 400": [
+          {
+            "group": "Error 400",
+            "optional": false,
+            "field": "InvalidParam",
+            "description": "<p>Invalid param</p>"
+          }
+        ],
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "optional": false,
+            "field": "BuyInfoServiceDown",
+            "description": "<p>BuyInfo service down</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "put",
+    "url": "/buyInfo/:buyInfoID",
+    "title": "UpdateBuyInfo",
+    "version": "1.0.0",
+    "group": "BuyInfo",
+    "permission": [
+      {
+        "name": "self/admin"
+      }
+    ],
+    "name": "UpdateBuyInfo",
+    "description": "<p>Update buy info</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "int32",
+            "optional": false,
+            "field": "status",
+            "description": "<p>1 for buying <br> 2 for reserved <br> 3 for done <br> 4 for expired <br> 5 for closed</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Response",
+            "optional": false,
+            "field": "response",
+            "description": "<p>see <a href=\"#api-Service-BuyInfo_Update\">BuyInfo Service</a></p>"
+          }
+        ]
+      }
+    },
+    "filename": "api/buyinfo/main.go",
+    "groupTitle": "BuyInfo",
+    "error": {
+      "fields": {
+        "Error 400": [
+          {
+            "group": "Error 400",
+            "optional": false,
+            "field": "InvalidParam",
+            "description": "<p>Invalid param</p>"
+          }
+        ],
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "optional": false,
+            "field": "BuyInfoServiceDown",
+            "description": "<p>BuyInfo service down</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "post",
     "url": "/content",
     "title": "AddContent",
     "version": "1.0.0",
-    "group": "SellInfo",
+    "group": "Content",
     "permission": [
       {
         "name": "user/admin"
@@ -83,7 +401,7 @@ define({ "api": [
             "type": "--",
             "optional": false,
             "field": "Param",
-            "description": "<p>see <a href=\"#api-Service-sellinfo_Content_Create\">SellInfo Service</a></p>"
+            "description": "<p>see <a href=\"#api-Service-Content_Create\">Content Service</a> <br> Max size is 50M</p>"
           }
         ]
       }
@@ -96,21 +414,169 @@ define({ "api": [
             "type": "Response",
             "optional": false,
             "field": "response",
-            "description": "<p>see <a href=\"#api-Service-sellinfo_Content_Create\">SellInfo Service</a></p>"
+            "description": "<p>see <a href=\"#api-Service-Content_Create\">Content Service</a></p>"
           }
         ]
       }
     },
-    "filename": "./api/sellinfo/main.go",
-    "groupTitle": "SellInfo",
+    "filename": "api/content/main.go",
+    "groupTitle": "Content",
     "error": {
       "fields": {
+        "Error 400": [
+          {
+            "group": "Error 400",
+            "optional": false,
+            "field": "InvalidParam",
+            "description": "<p>Invalid param</p>"
+          }
+        ],
         "Error 500": [
           {
             "group": "Error 500",
             "optional": false,
-            "field": "SellInfoServiceDown",
-            "description": "<p>SellInfo service down</p>"
+            "field": "ContentServiceDown",
+            "description": "<p>Content service down</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "delete",
+    "url": "/content",
+    "title": "DeleteContent",
+    "version": "1.0.0",
+    "group": "Content",
+    "permission": [
+      {
+        "name": "user/admin"
+      }
+    ],
+    "name": "DeleteContent",
+    "description": "<p>Delete sell info content</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "--",
+            "optional": false,
+            "field": "Param",
+            "description": "<p>see <a href=\"#api-Service-Content_Delete\">Content Service</a></p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Response",
+            "optional": false,
+            "field": "response",
+            "description": "<p>see <a href=\"#api-Service-Content_Delete\">Content Service</a></p>"
+          }
+        ]
+      }
+    },
+    "filename": "api/content/main.go",
+    "groupTitle": "Content",
+    "error": {
+      "fields": {
+        "Error 400": [
+          {
+            "group": "Error 400",
+            "optional": false,
+            "field": "InvalidParam",
+            "description": "<p>Invalid param</p>"
+          }
+        ],
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "optional": false,
+            "field": "ContentServiceDown",
+            "description": "<p>Content service down</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "get",
+    "url": "/content/:contentID",
+    "title": "GetContent",
+    "version": "1.0.0",
+    "group": "Content",
+    "permission": [
+      {
+        "name": "none/self/admin"
+      }
+    ],
+    "name": "GetContent",
+    "description": "<p>Get sell info content</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "int32",
+            "optional": true,
+            "field": "userID",
+            "description": "<p>user id, left empty for guest</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "--",
+            "optional": false,
+            "field": "Param",
+            "description": "<p>see <a href=\"#api-Service-Content_Query\">Content Service</a></p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "None - Success 200": [
+          {
+            "group": "None - Success 200",
+            "type": "Response",
+            "optional": false,
+            "field": "response",
+            "description": "<p>see <a href=\"#api-Service-Content_Query\">Content Service</a> <br> contentToken: hidden</p>"
+          }
+        ],
+        "Self/Admin - Success 200": [
+          {
+            "group": "Self/Admin - Success 200",
+            "type": "Response",
+            "optional": false,
+            "field": "response",
+            "description": "<p>see <a href=\"#api-Service-Content_Query\">Content Service</a></p>"
+          }
+        ]
+      }
+    },
+    "filename": "api/content/main.go",
+    "groupTitle": "Content",
+    "error": {
+      "fields": {
+        "Error 400": [
+          {
+            "group": "Error 400",
+            "optional": false,
+            "field": "InvalidParam",
+            "description": "<p>Invalid param</p>"
+          }
+        ],
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "optional": false,
+            "field": "ContentServiceDown",
+            "description": "<p>Content service down</p>"
           }
         ]
       }
@@ -118,6 +584,325 @@ define({ "api": [
   },
   {
     "type": "put",
+    "url": "/content",
+    "title": "UpdateContent",
+    "version": "1.0.0",
+    "group": "Content",
+    "permission": [
+      {
+        "name": "user/admin"
+      }
+    ],
+    "name": "UpdateContent",
+    "description": "<p>Update sell info content</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "--",
+            "optional": false,
+            "field": "Param",
+            "description": "<p>see <a href=\"#api-Service-Content_Update\">Content Service</a> <br> Max size is 50M</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Response",
+            "optional": false,
+            "field": "response",
+            "description": "<p>see <a href=\"#api-Service-Content_Update\">Content Service</a></p>"
+          }
+        ]
+      }
+    },
+    "filename": "api/content/main.go",
+    "groupTitle": "Content",
+    "error": {
+      "fields": {
+        "Error 400": [
+          {
+            "group": "Error 400",
+            "optional": false,
+            "field": "InvalidParam",
+            "description": "<p>Invalid param</p>"
+          }
+        ],
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "optional": false,
+            "field": "ContentServiceDown",
+            "description": "<p>Content service down</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "get",
+    "url": "/file/:fileID",
+    "title": "GetFile",
+    "version": "1.0.0",
+    "group": "File",
+    "permission": [
+      {
+        "name": "none"
+      }
+    ],
+    "name": "GetFile",
+    "description": "<p>Get file</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "--",
+            "optional": false,
+            "field": "Param",
+            "description": "<p>see <a href=\"#api-Service-File_Query\">File Service</a></p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "File",
+            "optional": false,
+            "field": "file",
+            "description": "<p>file itself</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 404": [
+          {
+            "group": "Error 404",
+            "optional": false,
+            "field": "FileNotFound",
+            "description": "<p>file not found</p>"
+          }
+        ],
+        "Error 400": [
+          {
+            "group": "Error 400",
+            "optional": false,
+            "field": "InvalidParam",
+            "description": "<p>Invalid param</p>"
+          }
+        ],
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "optional": false,
+            "field": "FileServiceDown",
+            "description": "<p>File service down</p>"
+          }
+        ]
+      }
+    },
+    "filename": "api/file/main.go",
+    "groupTitle": "File"
+  },
+  {
+    "type": "post",
+    "url": "/message",
+    "title": "AddMessage",
+    "version": "1.0.0",
+    "group": "Message",
+    "permission": [
+      {
+        "name": "self"
+      }
+    ],
+    "name": "AddMessage",
+    "description": "<p>Add chat message</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "--",
+            "optional": false,
+            "field": "Param",
+            "description": "<p>see <a href=\"#api-Service-Message_Create\">Message Service</a> <br> Self userID should in fromUser</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Response",
+            "optional": false,
+            "field": "response",
+            "description": "<p>see <a href=\"#api-Service-Message_Create\">Message Service</a></p>"
+          }
+        ]
+      }
+    },
+    "filename": "api/message/main.go",
+    "groupTitle": "Message",
+    "error": {
+      "fields": {
+        "Error 400": [
+          {
+            "group": "Error 400",
+            "optional": false,
+            "field": "InvalidParam",
+            "description": "<p>Invalid param</p>"
+          }
+        ],
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "optional": false,
+            "field": "MessageServiceDown",
+            "description": "<p>Message service down</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "get",
+    "url": "/message",
+    "title": "FindMessage",
+    "version": "1.0.0",
+    "group": "Message",
+    "permission": [
+      {
+        "name": "self/admin"
+      }
+    ],
+    "name": "FindMessage",
+    "description": "<p>Find chat message</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "--",
+            "optional": false,
+            "field": "Param",
+            "description": "<p>see <a href=\"#api-Service-Message_Find\">Message Service</a></p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Response",
+            "optional": false,
+            "field": "response",
+            "description": "<p>see <a href=\"#api-Service-Message_Find\">Message Service</a></p>"
+          }
+        ]
+      }
+    },
+    "filename": "api/message/main.go",
+    "groupTitle": "Message",
+    "error": {
+      "fields": {
+        "Error 400": [
+          {
+            "group": "Error 400",
+            "optional": false,
+            "field": "InvalidParam",
+            "description": "<p>Invalid param</p>"
+          }
+        ],
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "optional": false,
+            "field": "MessageServiceDown",
+            "description": "<p>Message service down</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "get",
+    "url": "/message/:userID",
+    "title": "GetMessage",
+    "version": "1.0.0",
+    "group": "Message",
+    "permission": [
+      {
+        "name": "self/admin"
+      }
+    ],
+    "name": "GetMessage",
+    "description": "<p>Get all (new) message about user</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "bool",
+            "optional": false,
+            "field": "oldMsg",
+            "defaultValue": "0",
+            "description": "<p>true to get all message, not only the new</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Response",
+            "optional": false,
+            "field": "response",
+            "description": "<p>see <a href=\"#api-Service-Message_Query\">Message Service</a></p>"
+          }
+        ]
+      }
+    },
+    "filename": "api/message/main.go",
+    "groupTitle": "Message",
+    "error": {
+      "fields": {
+        "Error 400": [
+          {
+            "group": "Error 400",
+            "optional": false,
+            "field": "InvalidParam",
+            "description": "<p>Invalid param</p>"
+          }
+        ],
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "optional": false,
+            "field": "MessageServiceDown",
+            "description": "<p>Message service down</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "post",
     "url": "/sellInfo",
     "title": "AddSellInfo",
     "version": "1.0.0",
@@ -137,7 +922,7 @@ define({ "api": [
             "type": "--",
             "optional": false,
             "field": "Param",
-            "description": "<p>see <a href=\"#api-Service-sellinfo_SellInfo_Create\">SellInfo Service</a></p>"
+            "description": "<p>see <a href=\"#api-Service-SellInfo_Create\">SellInfo Service</a></p>"
           }
         ]
       }
@@ -150,69 +935,23 @@ define({ "api": [
             "type": "Response",
             "optional": false,
             "field": "response",
-            "description": "<p>see <a href=\"#api-Service-sellinfo_SellInfo_Create\">SellInfo Service</a></p>"
+            "description": "<p>see <a href=\"#api-Service-SellInfo_Create\">SellInfo Service</a></p>"
           }
         ]
       }
     },
-    "filename": "./api/sellinfo/main.go",
+    "filename": "api/sellinfo/main.go",
     "groupTitle": "SellInfo",
     "error": {
       "fields": {
-        "Error 500": [
+        "Error 400": [
           {
-            "group": "Error 500",
+            "group": "Error 400",
             "optional": false,
-            "field": "SellInfoServiceDown",
-            "description": "<p>SellInfo service down</p>"
+            "field": "InvalidParam",
+            "description": "<p>Invalid param</p>"
           }
-        ]
-      }
-    }
-  },
-  {
-    "type": "delete",
-    "url": "/content",
-    "title": "DeleteContent",
-    "version": "1.0.0",
-    "group": "SellInfo",
-    "permission": [
-      {
-        "name": "user/admin"
-      }
-    ],
-    "name": "DeleteContent",
-    "description": "<p>Delete sell info content</p>",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "--",
-            "optional": false,
-            "field": "Param",
-            "description": "<p>see <a href=\"#api-Service-sellinfo_Content_Delete\">SellInfo Service</a></p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "Response",
-            "optional": false,
-            "field": "response",
-            "description": "<p>see <a href=\"#api-Service-sellinfo_Content_Delete\">SellInfo Service</a></p>"
-          }
-        ]
-      }
-    },
-    "filename": "./api/sellinfo/main.go",
-    "groupTitle": "SellInfo",
-    "error": {
-      "fields": {
+        ],
         "Error 500": [
           {
             "group": "Error 500",
@@ -245,7 +984,7 @@ define({ "api": [
             "type": "--",
             "optional": false,
             "field": "Param",
-            "description": "<p>see <a href=\"#api-Service-sellinfo_SellInfo_Find\">SellInfo Service</a></p>"
+            "description": "<p>see <a href=\"#api-Service-SellInfo_Find\">SellInfo Service</a></p>"
           }
         ]
       }
@@ -258,15 +997,23 @@ define({ "api": [
             "type": "Response",
             "optional": false,
             "field": "response",
-            "description": "<p>see <a href=\"#api-Service-sellinfo_SellInfo_Find\">SellInfo Service</a></p>"
+            "description": "<p>see <a href=\"#api-Service-SellInfo_Find\">SellInfo Service</a></p>"
           }
         ]
       }
     },
-    "filename": "./api/sellinfo/main.go",
+    "filename": "api/sellinfo/main.go",
     "groupTitle": "SellInfo",
     "error": {
       "fields": {
+        "Error 400": [
+          {
+            "group": "Error 400",
+            "optional": false,
+            "field": "InvalidParam",
+            "description": "<p>Invalid param</p>"
+          }
+        ],
         "Error 500": [
           {
             "group": "Error 500",
@@ -280,7 +1027,7 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/sellInfo/:sellInfoId",
+    "url": "/sellInfo/:sellInfoID",
     "title": "GetSellInfo",
     "version": "1.0.0",
     "group": "SellInfo",
@@ -299,7 +1046,7 @@ define({ "api": [
             "type": "--",
             "optional": false,
             "field": "Param",
-            "description": "<p>see <a href=\"#api-Service-sellinfo_SellInfo_Query\">SellInfo Service</a></p>"
+            "description": "<p>see <a href=\"#api-Service-SellInfo_Query\">SellInfo Service</a></p>"
           }
         ]
       }
@@ -312,15 +1059,85 @@ define({ "api": [
             "type": "Response",
             "optional": false,
             "field": "response",
-            "description": "<p>see <a href=\"#api-Service-sellinfo_SellInfo_Query\">SellInfo Service</a></p>"
+            "description": "<p>see <a href=\"#api-Service-SellInfo_Query\">SellInfo Service</a></p>"
           }
         ]
       }
     },
-    "filename": "./api/sellinfo/main.go",
+    "filename": "api/sellinfo/main.go",
     "groupTitle": "SellInfo",
     "error": {
       "fields": {
+        "Error 400": [
+          {
+            "group": "Error 400",
+            "optional": false,
+            "field": "InvalidParam",
+            "description": "<p>Invalid param</p>"
+          }
+        ],
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "optional": false,
+            "field": "SellInfoServiceDown",
+            "description": "<p>SellInfo service down</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "put",
+    "url": "/sellInfo/:sellInfoID",
+    "title": "UpdateSellInfo",
+    "version": "1.0.0",
+    "group": "SellInfo",
+    "permission": [
+      {
+        "name": "self/admin"
+      }
+    ],
+    "name": "UpdateSellInfo",
+    "description": "<p>Update sell info</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "int32",
+            "optional": false,
+            "field": "status",
+            "description": "<p>1 for selling <br> 2 for reserved <br> 3 for done <br> 4 for expired <br> 5 for closed</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Response",
+            "optional": false,
+            "field": "response",
+            "description": "<p>see <a href=\"#api-Service-SellInfo_Update\">SellInfo Service</a></p>"
+          }
+        ]
+      }
+    },
+    "filename": "api/sellinfo/main.go",
+    "groupTitle": "SellInfo",
+    "error": {
+      "fields": {
+        "Error 400": [
+          {
+            "group": "Error 400",
+            "optional": false,
+            "field": "InvalidParam",
+            "description": "<p>Invalid param</p>"
+          }
+        ],
         "Error 500": [
           {
             "group": "Error 500",
@@ -335,10 +1152,10 @@ define({ "api": [
   {
     "type": "rpc",
     "url": "/rpc",
-    "title": "auth.Auth.Auth",
+    "title": "Auth.Auth",
     "version": "1.0.0",
     "group": "Service",
-    "name": "auth_Auth_Auth",
+    "name": "Auth_Auth",
     "description": "<p>Check OAuth code.</p>",
     "parameter": {
       "fields": {
@@ -361,7 +1178,7 @@ define({ "api": [
             "type": "int32",
             "optional": false,
             "field": "status",
-            "description": "<p>-1 for invalid param <br> 1 for success <br> 2 for invalid code</p>"
+            "description": "<p>-1 for invalid param <br> 1 for success <br> 2 for invalid code <br> 3 for frozen user</p>"
           },
           {
             "group": "Success 200",
@@ -385,47 +1202,33 @@ define({ "api": [
         ]
       }
     },
-    "filename": "./srv/auth/main.go",
+    "filename": "srv/auth/main.go",
     "groupTitle": "Service"
   },
   {
     "type": "rpc",
     "url": "/rpc",
-    "title": "sellinfo.Content.Create",
+    "title": "Avatar.Create",
     "version": "1.0.0",
     "group": "Service",
-    "name": "sellinfo_Content_Create",
-    "description": "<p>create sell info content</p>",
+    "name": "Avatar_Create",
+    "description": "<p>Create avatar and return avatarID.</p>",
     "parameter": {
       "fields": {
         "Parameter": [
           {
             "group": "Parameter",
-            "type": "string",
-            "optional": true,
-            "field": "contentId",
-            "description": "<p>24 bytes content id, left empty for first upload</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "string",
-            "optional": true,
-            "field": "contentToken",
-            "description": "<p>content token, left empty for first upload</p>"
+            "type": "int32",
+            "optional": false,
+            "field": "userID",
+            "description": "<p>user id</p>"
           },
           {
             "group": "Parameter",
             "type": "bytes",
             "optional": false,
-            "field": "content",
-            "description": "<p>binary content</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "int32",
-            "optional": false,
-            "field": "type",
-            "description": "<p>1 for picture <br> 2 for video</p>"
+            "field": "file",
+            "description": "<p>file bytes, file accept <a href=\"https://github.com/h2non/filetype#image\">file type</a></p>"
           }
         ]
       }
@@ -438,26 +1241,19 @@ define({ "api": [
             "type": "int32",
             "optional": false,
             "field": "status",
-            "description": "<p>-1 for invalid param <br> 1 for success <br> 2 for invalid token</p>"
+            "description": "<p>-1 for invalid param <br> 1 for success <br> 2 for not found <br> 3 for invalid file type</p>"
           },
           {
             "group": "Success 200",
-            "type": "string",
+            "type": "int32",
             "optional": false,
-            "field": "contentId",
-            "description": "<p>24 bytes contentId</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "string",
-            "optional": false,
-            "field": "contentToken",
-            "description": "<p>random uuid content token</p>"
+            "field": "avatarID",
+            "description": "<p>new avatar id</p>"
           }
         ]
       }
     },
-    "filename": "./srv/sellinfo/main.go",
+    "filename": "srv/avatar/main.go",
     "groupTitle": "Service",
     "error": {
       "fields": {
@@ -475,11 +1271,373 @@ define({ "api": [
   {
     "type": "rpc",
     "url": "/rpc",
-    "title": "sellinfo.Content.Delete",
+    "title": "BuyInfo.Create",
     "version": "1.0.0",
     "group": "Service",
-    "name": "sellinfo_Content_Delete",
-    "description": "<p>delete sell info content</p>",
+    "name": "BuyInfo_Create",
+    "description": "<p>Create buy info</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "int32",
+            "optional": false,
+            "field": "userID",
+            "description": "<p>user id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "int64",
+            "optional": false,
+            "field": "validTime",
+            "description": "<p>valid timestamp</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "goodName",
+            "description": "<p>good name</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": true,
+            "field": "description",
+            "description": "<p>description for good</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "double",
+            "optional": true,
+            "field": "price",
+            "description": "<p>good price</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": true,
+            "field": "contentID",
+            "description": "<p>content id of good</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": true,
+            "field": "contentToken",
+            "description": "<p>content token</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "list",
+            "optional": true,
+            "field": "tags",
+            "description": "<p>{string} tag</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "int32",
+            "optional": false,
+            "field": "status",
+            "description": "<p>-1 for invalid param <br> 1 for success <br> 2 for invalid token</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "int32",
+            "optional": false,
+            "field": "buyInfoID",
+            "description": "<p>created buyInfoID</p>"
+          }
+        ]
+      }
+    },
+    "filename": "srv/buyinfo/main.go",
+    "groupTitle": "Service",
+    "error": {
+      "fields": {
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "optional": false,
+            "field": "DBServerDown",
+            "description": "<p>can't connect to database server</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "rpc",
+    "url": "/rpc",
+    "title": "BuyInfo.Find",
+    "version": "1.0.0",
+    "group": "Service",
+    "name": "BuyInfo_Find",
+    "description": "<p>Find BuyInfo.</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "int32",
+            "optional": true,
+            "field": "userID",
+            "description": "<p>userID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "int32",
+            "optional": true,
+            "field": "status",
+            "description": "<p>status 1 for waiting <br> 2 for reserved <br> 3 for done <br> 4 for expired <br> 5 for closed</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": true,
+            "field": "goodName",
+            "description": "<p>good name(fuzzy)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "double",
+            "optional": false,
+            "field": "lowPrice",
+            "defaultValue": "0",
+            "description": "<p>low bound of price, included</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "double",
+            "optional": false,
+            "field": "highPrice",
+            "defaultValue": "inf",
+            "description": "<p>high bound of price, included</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "uint32",
+            "size": "0-100",
+            "optional": false,
+            "field": "limit",
+            "defaultValue": "100",
+            "description": "<p>row limit</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "uint32",
+            "optional": false,
+            "field": "offset",
+            "defaultValue": "0",
+            "description": "<p>row offset</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "list",
+            "optional": false,
+            "field": "buyInfo",
+            "description": "<p>see <a href=\"#api-Service-BuyInfo_Query\">BuyInfo Service</a></p>"
+          }
+        ]
+      }
+    },
+    "filename": "srv/buyinfo/main.go",
+    "groupTitle": "Service",
+    "error": {
+      "fields": {
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "optional": false,
+            "field": "DBServerDown",
+            "description": "<p>can't connect to database server</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "rpc",
+    "url": "/rpc",
+    "title": "BuyInfo.Query",
+    "version": "1.0.0",
+    "group": "Service",
+    "name": "BuyInfo_Query",
+    "description": "<p>Query buy info</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "int32",
+            "optional": false,
+            "field": "buyInfoID",
+            "description": "<p>buyInfo id.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "int32",
+            "optional": false,
+            "field": "buyInfoID",
+            "description": "<p>buyInfoID</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "int32",
+            "optional": false,
+            "field": "status",
+            "description": "<p>1 for buying <br> 2 for reserved <br> 3 for done <br> 4 for expired <br> 5 for closed</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "int64",
+            "optional": false,
+            "field": "releaseTime",
+            "description": "<p>buyInfo release time</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "int64",
+            "optional": false,
+            "field": "validTime",
+            "description": "<p>buyInfo validate time</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "string",
+            "optional": false,
+            "field": "goodName",
+            "description": "<p>good name</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "double",
+            "optional": false,
+            "field": "price",
+            "description": "<p>good price</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "string",
+            "optional": false,
+            "field": "description",
+            "description": "<p>good description</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "string",
+            "optional": false,
+            "field": "contentID",
+            "description": "<p>multimedia data</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "int32",
+            "optional": false,
+            "field": "userID",
+            "description": "<p>userID</p>"
+          }
+        ]
+      }
+    },
+    "filename": "srv/buyinfo/main.go",
+    "groupTitle": "Service",
+    "error": {
+      "fields": {
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "optional": false,
+            "field": "DBServerDown",
+            "description": "<p>can't connect to database server</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "rpc",
+    "url": "/rpc",
+    "title": "BuyInfo.Update",
+    "version": "1.0.0",
+    "group": "Service",
+    "name": "BuyInfo_Update",
+    "description": "<p>Update buy info.</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "int32",
+            "optional": false,
+            "field": "buyInfoID",
+            "description": "<p>buyInfo id.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "int32",
+            "optional": false,
+            "field": "status",
+            "description": "<p>1 for selling <br> 2 for reserved <br> 3 for done <br> 4 for expired <br> 5 for closed</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "int32",
+            "optional": false,
+            "field": "status",
+            "description": "<p>-1 for invalid param <br> 1 for success <br> 2 for buy info not found</p>"
+          }
+        ]
+      }
+    },
+    "filename": "srv/buyinfo/main.go",
+    "groupTitle": "Service",
+    "error": {
+      "fields": {
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "optional": false,
+            "field": "DBServerDown",
+            "description": "<p>can't connect to database server</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "rpc",
+    "url": "/rpc",
+    "title": "Content.Check",
+    "version": "1.0.0",
+    "group": "Service",
+    "name": "Content_Check",
+    "description": "<p>check sell info content</p>",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -487,7 +1645,7 @@ define({ "api": [
             "group": "Parameter",
             "type": "string",
             "optional": false,
-            "field": "contentId",
+            "field": "contentID",
             "description": "<p>24 bytes content id</p>"
           },
           {
@@ -508,12 +1666,12 @@ define({ "api": [
             "type": "int32",
             "optional": false,
             "field": "status",
-            "description": "<p>-1 for invalid param <br> 1 for success <br> 2 for invalid token</p>"
+            "description": "<p>-1 for invalid param <br> 1 for valid <br> 2 for invalid</p>"
           }
         ]
       }
     },
-    "filename": "./srv/sellinfo/main.go",
+    "filename": "srv/content/main.go",
     "groupTitle": "Service",
     "error": {
       "fields": {
@@ -531,10 +1689,909 @@ define({ "api": [
   {
     "type": "rpc",
     "url": "/rpc",
-    "title": "sellinfo.SellInfo.Create",
+    "title": "Content.Create",
     "version": "1.0.0",
     "group": "Service",
-    "name": "sellinfo_SellInfo_Create",
+    "name": "Content_Create",
+    "description": "<p>create sell info content</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": true,
+            "field": "contentID",
+            "description": "<p>24 bytes content id, left empty for first upload</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": true,
+            "field": "contentToken",
+            "description": "<p>content token, left empty for first upload</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "bytes",
+            "optional": false,
+            "field": "content",
+            "description": "<p>binary bytes, file accept <a href=\"https://github.com/h2non/filetype#image\">image</a> and <a href=\"https://github.com/h2non/filetype#video\">video</a></p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "int32",
+            "optional": false,
+            "field": "type",
+            "description": "<p>1 for picture <br> 2 for video</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "int32",
+            "optional": false,
+            "field": "status",
+            "description": "<p>-1 for invalid param <br> 1 for success <br> 2 for invalid token <br> 3 for invalid type</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "string",
+            "optional": false,
+            "field": "contentID",
+            "description": "<p>24 bytes contentID</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "string",
+            "optional": false,
+            "field": "contentToken",
+            "description": "<p>random uuid content token</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "string",
+            "optional": false,
+            "field": "fileID",
+            "description": "<p>24 bytes fileID</p>"
+          }
+        ]
+      }
+    },
+    "filename": "srv/content/main.go",
+    "groupTitle": "Service",
+    "error": {
+      "fields": {
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "optional": false,
+            "field": "DBServerDown",
+            "description": "<p>can't connect to database server</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "rpc",
+    "url": "/rpc",
+    "title": "Content.CreateTag",
+    "version": "1.0.0",
+    "group": "Service",
+    "name": "Content_CreateTag",
+    "description": "<p>create tags</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": true,
+            "field": "contentID",
+            "description": "<p>24 bytes content id, left empty for first upload</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": true,
+            "field": "contentToken",
+            "description": "<p>content token, left empty for first upload</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "list",
+            "optional": false,
+            "field": "tags",
+            "description": "<p>{string} tag</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "int32",
+            "optional": false,
+            "field": "status",
+            "description": "<p>-1 for invalid param <br> 1 for success <br> 2 for invalid token <br> 3 for invalid type</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "string",
+            "optional": false,
+            "field": "contentID",
+            "description": "<p>24 bytes contentID</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "string",
+            "optional": false,
+            "field": "contentToken",
+            "description": "<p>random uuid content token</p>"
+          }
+        ]
+      }
+    },
+    "filename": "srv/content/main.go",
+    "groupTitle": "Service",
+    "error": {
+      "fields": {
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "optional": false,
+            "field": "DBServerDown",
+            "description": "<p>can't connect to database server</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "rpc",
+    "url": "/rpc",
+    "title": "Content.Delete",
+    "version": "1.0.0",
+    "group": "Service",
+    "name": "Content_Delete",
+    "description": "<p>delete sell info content</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "contentID",
+            "description": "<p>24 bytes content id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "contentToken",
+            "description": "<p>content token</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": true,
+            "field": "fileID",
+            "description": "<p>24 bytes file id, if not empty only delete this file</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "int32",
+            "optional": false,
+            "field": "status",
+            "description": "<p>-1 for invalid param <br> 1 for success <br> 2 for invalid token</p>"
+          }
+        ]
+      }
+    },
+    "filename": "srv/content/main.go",
+    "groupTitle": "Service",
+    "error": {
+      "fields": {
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "optional": false,
+            "field": "DBServerDown",
+            "description": "<p>can't connect to database server</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "rpc",
+    "url": "/rpc",
+    "title": "Content.Query",
+    "version": "1.0.0",
+    "group": "Service",
+    "name": "Content_Query",
+    "description": "<p>query sell info content</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "contentID",
+            "description": "<p>24 bytes content id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "int32",
+            "optional": false,
+            "field": "status",
+            "description": "<p>-1 for invalid param <br> 1 for success <br> 2 for not found</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "string",
+            "optional": false,
+            "field": "contentToken",
+            "description": "<p>content token</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "list",
+            "optional": false,
+            "field": "files",
+            "description": "<p>{string} fileID : file id <br> {int32} type : file type 1 for picture, 2 for video</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "list",
+            "optional": false,
+            "field": "tags",
+            "description": "<p>{string} tag : tag name</p>"
+          }
+        ]
+      }
+    },
+    "filename": "srv/content/main.go",
+    "groupTitle": "Service",
+    "error": {
+      "fields": {
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "optional": false,
+            "field": "DBServerDown",
+            "description": "<p>can't connect to database server</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "rpc",
+    "url": "/rpc",
+    "title": "Content.Update",
+    "version": "1.0.0",
+    "group": "Service",
+    "name": "Content_Update",
+    "description": "<p>update sell info content</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "contentID",
+            "description": "<p>24 bytes content id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "contentToken",
+            "description": "<p>content token</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "fileID",
+            "description": "<p>24 bytes file id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "bytes",
+            "optional": false,
+            "field": "content",
+            "description": "<p>binary bytes, file accept <a href=\"https://github.com/h2non/filetype#image\">image</a> and <a href=\"https://github.com/h2non/filetype#video\">video</a></p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "int32",
+            "optional": false,
+            "field": "type",
+            "description": "<p>1 for picture <br> 2 for video</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "int32",
+            "optional": false,
+            "field": "status",
+            "description": "<p>-1 for invalid param <br> 1 for success <br> 2 for invalid token <br> 3 for not found <br> 4 for invalid type</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "string",
+            "optional": false,
+            "field": "fileID",
+            "description": "<p>24 bytes updated file id</p>"
+          }
+        ]
+      }
+    },
+    "filename": "srv/content/main.go",
+    "groupTitle": "Service",
+    "error": {
+      "fields": {
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "optional": false,
+            "field": "DBServerDown",
+            "description": "<p>can't connect to database server</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "rpc",
+    "url": "/rpc",
+    "title": "File.Create",
+    "version": "1.0.0",
+    "group": "Service",
+    "name": "File_Create",
+    "description": "<p>Create file</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "bytes",
+            "optional": false,
+            "field": "file",
+            "description": "<p>file stream bytes</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "int32",
+            "optional": false,
+            "field": "status",
+            "description": "<p>-1 for invalid param <br> 1 for success</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "string",
+            "optional": false,
+            "field": "fileID",
+            "description": "<p>file id</p>"
+          }
+        ]
+      }
+    },
+    "filename": "srv/file/main.go",
+    "groupTitle": "Service",
+    "error": {
+      "fields": {
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "optional": false,
+            "field": "DBServerDown",
+            "description": "<p>can't connect to database server</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "rpc",
+    "url": "/rpc",
+    "title": "File.Delete",
+    "version": "1.0.0",
+    "group": "Service",
+    "name": "File_Delete",
+    "description": "<p>Delete file</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "fileID",
+            "description": "<p>file id.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "int32",
+            "optional": false,
+            "field": "status",
+            "description": "<p>-1 for invalid param <br> 1 for success <br> 2 for not found</p>"
+          }
+        ]
+      }
+    },
+    "filename": "srv/file/main.go",
+    "groupTitle": "Service",
+    "error": {
+      "fields": {
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "optional": false,
+            "field": "DBServerDown",
+            "description": "<p>can't connect to database server</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "rpc",
+    "url": "/rpc",
+    "title": "File.Query",
+    "version": "1.0.0",
+    "group": "Service",
+    "name": "File_Query",
+    "description": "<p>Query file stream</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "fileID",
+            "description": "<p>file id.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "int32",
+            "optional": false,
+            "field": "status",
+            "description": "<p>-1 for invalid param <br> 1 for success <br> 2 for not found</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "bytes",
+            "optional": false,
+            "field": "file",
+            "description": "<p>file stream</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "int64",
+            "optional": false,
+            "field": "size",
+            "description": "<p>file size</p>"
+          }
+        ]
+      }
+    },
+    "filename": "srv/file/main.go",
+    "groupTitle": "Service",
+    "error": {
+      "fields": {
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "optional": false,
+            "field": "DBServerDown",
+            "description": "<p>can't connect to database server</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "rpc",
+    "url": "/rpc",
+    "title": "Message.Create",
+    "version": "1.0.0",
+    "group": "Service",
+    "name": "Message_Create",
+    "description": "<p>Create Message</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "int32",
+            "optional": false,
+            "field": "fromUser",
+            "description": "<p>user who launch the chat at first time</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "int32",
+            "optional": false,
+            "field": "toUser",
+            "description": "<p>user who accept the chat at first time</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "int32",
+            "optional": false,
+            "field": "type",
+            "description": "<p>1 for text <br> 2 for picture <br> 3 for video</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "bytes",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>file stream bytes if type is picture or video, plain text if type is text</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "int32",
+            "optional": false,
+            "field": "status",
+            "description": "<p>-1 for invalid param <br> 1 for success</p>"
+          }
+        ]
+      }
+    },
+    "filename": "srv/message/main.go",
+    "groupTitle": "Service",
+    "error": {
+      "fields": {
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "optional": false,
+            "field": "DBServerDown",
+            "description": "<p>can't connect to database server</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "rpc",
+    "url": "/rpc",
+    "title": "Message.Find",
+    "version": "1.0.0",
+    "group": "Service",
+    "name": "Message_Find",
+    "description": "<p>Find Message</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "int32",
+            "optional": false,
+            "field": "fromUser",
+            "description": "<p>user who want to find</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "int32",
+            "optional": false,
+            "field": "toUser",
+            "description": "<p>user who chat with from user</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "int32",
+            "optional": false,
+            "field": "way",
+            "description": "<p>1 for read message <br> 2 for query history message <br> Note: only 1 will set unread to false</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "uint32",
+            "size": "0-20",
+            "optional": false,
+            "field": "limit",
+            "defaultValue": "20",
+            "description": "<p>limit of return message infos, only for history query</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "uint32",
+            "optional": false,
+            "field": "offset",
+            "defaultValue": "0",
+            "description": "<p>offset from the latest message info, only for history query</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "int32",
+            "optional": false,
+            "field": "fromUser",
+            "description": "<p>user who launch the chat at first time</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "int32",
+            "optional": false,
+            "field": "toUser",
+            "description": "<p>user who accept the chat at first time</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "int32",
+            "optional": false,
+            "field": "badge",
+            "description": "<p>count of message still unread</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "int32",
+            "optional": false,
+            "field": "status",
+            "description": "<p>-1 for invalid param <br> 1 for success <br> 2 for not found</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "list",
+            "optional": false,
+            "field": "infos",
+            "description": "<p>see below MessageInfo</p>"
+          }
+        ],
+        "MessageInfo": [
+          {
+            "group": "MessageInfo",
+            "type": "int64",
+            "optional": false,
+            "field": "time",
+            "description": "<p>message create time</p>"
+          },
+          {
+            "group": "MessageInfo",
+            "type": "bool",
+            "optional": false,
+            "field": "forward",
+            "description": "<p>false for chat from toUser to fromUser <br> true for chat from fromUser to toUser</p>"
+          },
+          {
+            "group": "MessageInfo",
+            "type": "int32",
+            "optional": false,
+            "field": "type",
+            "description": "<p>1 for text <br> 2 for picture <br> 3 for video</p>"
+          },
+          {
+            "group": "MessageInfo",
+            "type": "bytes",
+            "optional": false,
+            "field": "text",
+            "description": "<p>plain message text if type is text <br> fileID if type is picture or video</p>"
+          },
+          {
+            "group": "MessageInfo",
+            "type": "bool",
+            "optional": false,
+            "field": "unread",
+            "description": "<p>false for having read <br> true for not having read</p>"
+          }
+        ]
+      }
+    },
+    "filename": "srv/message/main.go",
+    "groupTitle": "Service",
+    "error": {
+      "fields": {
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "optional": false,
+            "field": "DBServerDown",
+            "description": "<p>can't connect to database server</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "rpc",
+    "url": "/rpc",
+    "title": "Message.Query",
+    "version": "1.0.0",
+    "group": "Service",
+    "name": "Message_Query",
+    "description": "<p>Query New Message, do NOT set read</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "int32",
+            "optional": false,
+            "field": "userID",
+            "description": "<p>user who wants to pull new message</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "bool",
+            "optional": false,
+            "field": "oldMsg",
+            "defaultValue": "0",
+            "description": "<p>true to get all message, not only the new</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "int32",
+            "optional": false,
+            "field": "status",
+            "description": "<p>-1 for invalid param <br> 1 for success</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "list",
+            "optional": false,
+            "field": "news",
+            "description": "<p>see below NewMessage</p>"
+          }
+        ],
+        "NewMessage": [
+          {
+            "group": "NewMessage",
+            "type": "int32",
+            "optional": false,
+            "field": "fromUser",
+            "description": "<p>user who launch the chat at first time</p>"
+          },
+          {
+            "group": "NewMessage",
+            "type": "int32",
+            "optional": false,
+            "field": "toUser",
+            "description": "<p>user who accept the chat at first time</p>"
+          },
+          {
+            "group": "NewMessage",
+            "type": "int32",
+            "optional": false,
+            "field": "badge",
+            "description": "<p>count of message still unread</p>"
+          },
+          {
+            "group": "NewMessage",
+            "type": "MessageInfo",
+            "optional": false,
+            "field": "info",
+            "description": "<p>newest one msg for each dialog, see below MessageInfo</p>"
+          }
+        ],
+        "MessageInfo": [
+          {
+            "group": "MessageInfo",
+            "type": "int64",
+            "optional": false,
+            "field": "time",
+            "description": "<p>message create time</p>"
+          },
+          {
+            "group": "MessageInfo",
+            "type": "bool",
+            "optional": false,
+            "field": "forward",
+            "description": "<p>false for chat from toUser to fromUser <br> true for chat from fromUser to toUser</p>"
+          },
+          {
+            "group": "MessageInfo",
+            "type": "int32",
+            "optional": false,
+            "field": "type",
+            "description": "<p>1 for text <br> 2 for picture <br> 3 for video</p>"
+          },
+          {
+            "group": "MessageInfo",
+            "type": "string",
+            "optional": false,
+            "field": "text",
+            "description": "<p>plain message text if type is text <br> fileID if type is picture or video</p>"
+          },
+          {
+            "group": "MessageInfo",
+            "type": "bool",
+            "optional": false,
+            "field": "unread",
+            "description": "<p>always true</p>"
+          }
+        ]
+      }
+    },
+    "filename": "srv/message/main.go",
+    "groupTitle": "Service",
+    "error": {
+      "fields": {
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "optional": false,
+            "field": "DBServerDown",
+            "description": "<p>can't connect to database server</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "rpc",
+    "url": "/rpc",
+    "title": "SellInfo.Create",
+    "version": "1.0.0",
+    "group": "Service",
+    "name": "SellInfo_Create",
     "description": "<p>create sell info</p>",
     "parameter": {
       "fields": {
@@ -543,7 +2600,7 @@ define({ "api": [
             "group": "Parameter",
             "type": "int32",
             "optional": false,
-            "field": "userId",
+            "field": "userID",
             "description": "<p>sellinfo userid</p>"
           },
           {
@@ -578,7 +2635,7 @@ define({ "api": [
             "group": "Parameter",
             "type": "string",
             "optional": true,
-            "field": "contentId",
+            "field": "contentID",
             "description": "<p>content id of good</p>"
           },
           {
@@ -587,6 +2644,13 @@ define({ "api": [
             "optional": true,
             "field": "contentToken",
             "description": "<p>content token</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "list",
+            "optional": true,
+            "field": "tags",
+            "description": "<p>{string} tag</p>"
           }
         ]
       }
@@ -605,13 +2669,13 @@ define({ "api": [
             "group": "Success 200",
             "type": "int32",
             "optional": false,
-            "field": "sellInfoId",
-            "description": "<p>created sellInfoId</p>"
+            "field": "sellInfoID",
+            "description": "<p>created sellInfoID</p>"
           }
         ]
       }
     },
-    "filename": "./srv/sellinfo/main.go",
+    "filename": "srv/sellinfo/main.go",
     "groupTitle": "Service",
     "error": {
       "fields": {
@@ -629,10 +2693,10 @@ define({ "api": [
   {
     "type": "rpc",
     "url": "/rpc",
-    "title": "sellinfo.SellInfo.Find",
+    "title": "SellInfo.Find",
     "version": "1.0.0",
     "group": "Service",
-    "name": "sellinfo_SellInfo_Find",
+    "name": "SellInfo_Find",
     "description": "<p>Find SellInfo.</p>",
     "parameter": {
       "fields": {
@@ -641,12 +2705,43 @@ define({ "api": [
             "group": "Parameter",
             "type": "int32",
             "optional": true,
-            "field": "userId",
-            "description": "<p>userId</p>"
+            "field": "userID",
+            "description": "<p>userID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "int32",
+            "optional": true,
+            "field": "status",
+            "description": "<p>status 1 for selling <br> 2 for reserved <br> 3 for done <br> 4 for expired <br> 5 for closed</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": true,
+            "field": "goodName",
+            "description": "<p>good name(fuzzy)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "double",
+            "optional": false,
+            "field": "lowPrice",
+            "defaultValue": "0",
+            "description": "<p>low bound of price</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "double",
+            "optional": false,
+            "field": "highPrice",
+            "defaultValue": "inf",
+            "description": "<p>high bound of price</p>"
           },
           {
             "group": "Parameter",
             "type": "uint32",
+            "size": "0-100",
             "optional": false,
             "field": "limit",
             "defaultValue": "100",
@@ -676,7 +2771,7 @@ define({ "api": [
         ]
       }
     },
-    "filename": "./srv/sellinfo/main.go",
+    "filename": "srv/sellinfo/main.go",
     "groupTitle": "Service",
     "error": {
       "fields": {
@@ -694,10 +2789,10 @@ define({ "api": [
   {
     "type": "rpc",
     "url": "/rpc",
-    "title": "sellinfo.SellInfo.Query",
+    "title": "SellInfo.Query",
     "version": "1.0.0",
     "group": "Service",
-    "name": "sellinfo_SellInfo_Query",
+    "name": "SellInfo_Query",
     "description": "<p>Query sell info</p>",
     "parameter": {
       "fields": {
@@ -706,7 +2801,7 @@ define({ "api": [
             "group": "Parameter",
             "type": "int32",
             "optional": false,
-            "field": "sellInfoId",
+            "field": "sellInfoID",
             "description": "<p>sellInfo id.</p>"
           }
         ]
@@ -719,15 +2814,15 @@ define({ "api": [
             "group": "Success 200",
             "type": "int32",
             "optional": false,
-            "field": "sellInfoId",
-            "description": "<p>sellInfoId</p>"
+            "field": "sellInfoID",
+            "description": "<p>sellInfoID</p>"
           },
           {
             "group": "Success 200",
             "type": "int32",
             "optional": false,
-            "field": "sellInfoState",
-            "description": "<p>1 for selling <br> 2 for reserved <br> 3 for done <br> 4 for expired</p>"
+            "field": "status",
+            "description": "<p>1 for selling <br> 2 for reserved <br> 3 for done <br> 4 for expired <br> 5 for closed</p>"
           },
           {
             "group": "Success 200",
@@ -768,20 +2863,20 @@ define({ "api": [
             "group": "Success 200",
             "type": "string",
             "optional": false,
-            "field": "contentId",
+            "field": "contentID",
             "description": "<p>multimedia data</p>"
           },
           {
             "group": "Success 200",
             "type": "int32",
             "optional": false,
-            "field": "userId",
-            "description": "<p>userId</p>"
+            "field": "userID",
+            "description": "<p>userID</p>"
           }
         ]
       }
     },
-    "filename": "./srv/sellinfo/main.go",
+    "filename": "srv/sellinfo/main.go",
     "groupTitle": "Service",
     "error": {
       "fields": {
@@ -799,20 +2894,27 @@ define({ "api": [
   {
     "type": "rpc",
     "url": "/rpc",
-    "title": "user.AdminUser.Create",
+    "title": "SellInfo.Update",
     "version": "1.0.0",
     "group": "Service",
-    "name": "user_AdminUser_Create",
-    "description": "<p>Create new admin user.</p>",
+    "name": "SellInfo_Update",
+    "description": "<p>Update sell info.</p>",
     "parameter": {
       "fields": {
         "Parameter": [
           {
             "group": "Parameter",
-            "type": "string",
+            "type": "int32",
             "optional": false,
-            "field": "studentId",
-            "description": "<p>student id.</p>"
+            "field": "sellInfoID",
+            "description": "<p>sellInfo id.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "int32",
+            "optional": false,
+            "field": "status",
+            "description": "<p>1 for selling <br> 2 for reserved <br> 3 for done <br> 4 for expired <br> 5 for closed</p>"
           }
         ]
       }
@@ -825,19 +2927,12 @@ define({ "api": [
             "type": "int32",
             "optional": false,
             "field": "status",
-            "description": "<p>-1 for invalid param <br> 1 for success <br> 2 for exist user</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "int32",
-            "optional": false,
-            "field": "adminId",
-            "description": "<p>created or existed adminId</p>"
+            "description": "<p>-1 for invalid param <br> 1 for success <br> 2 for sell info not found</p>"
           }
         ]
       }
     },
-    "filename": "./srv/user/main.go",
+    "filename": "srv/sellinfo/main.go",
     "groupTitle": "Service",
     "error": {
       "fields": {
@@ -855,66 +2950,10 @@ define({ "api": [
   {
     "type": "rpc",
     "url": "/rpc",
-    "title": "user.AdminUser.Find",
+    "title": "User.Create",
     "version": "1.0.0",
     "group": "Service",
-    "name": "user_AdminUser_Find",
-    "description": "<p>Find admin user.</p>",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "string",
-            "optional": false,
-            "field": "studentId",
-            "description": "<p>student id.</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "int32",
-            "optional": false,
-            "field": "status",
-            "description": "<p>-1 for invalid param <br> 1 for success <br> 2 for not found</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "int32",
-            "optional": false,
-            "field": "adminId",
-            "description": ""
-          }
-        ]
-      }
-    },
-    "filename": "./srv/user/main.go",
-    "groupTitle": "Service",
-    "error": {
-      "fields": {
-        "Error 500": [
-          {
-            "group": "Error 500",
-            "optional": false,
-            "field": "DBServerDown",
-            "description": "<p>can't connect to database server</p>"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "rpc",
-    "url": "/rpc",
-    "title": "user.User.Create",
-    "version": "1.0.0",
-    "group": "Service",
-    "name": "user_User_Create",
+    "name": "User_Create",
     "description": "<p>Create new user.</p>",
     "parameter": {
       "fields": {
@@ -923,7 +2962,7 @@ define({ "api": [
             "group": "Parameter",
             "type": "string",
             "optional": false,
-            "field": "studentId",
+            "field": "studentID",
             "description": "<p>student id.</p>"
           },
           {
@@ -948,15 +2987,15 @@ define({ "api": [
           },
           {
             "group": "Success 200",
-            "type": "int32",
+            "type": "Response",
             "optional": false,
-            "field": "userId",
-            "description": "<p>created or existed userid</p>"
+            "field": "user",
+            "description": "<p>see <a href=\"#api-Service-User_Query\">User Service</a></p>"
           }
         ]
       }
     },
-    "filename": "./srv/user/main.go",
+    "filename": "srv/user/main.go",
     "groupTitle": "Service",
     "error": {
       "fields": {
@@ -974,10 +3013,10 @@ define({ "api": [
   {
     "type": "rpc",
     "url": "/rpc",
-    "title": "user.User.Find",
+    "title": "User.Find",
     "version": "1.0.0",
     "group": "Service",
-    "name": "user_User_Find",
+    "name": "User_Find",
     "description": "<p>Find user(fuzzy).</p>",
     "parameter": {
       "fields": {
@@ -992,6 +3031,7 @@ define({ "api": [
           {
             "group": "Parameter",
             "type": "uint32",
+            "size": "0-100",
             "optional": false,
             "field": "limit",
             "defaultValue": "100",
@@ -1013,15 +3053,15 @@ define({ "api": [
         "Success 200": [
           {
             "group": "Success 200",
-            "type": "list",
+            "type": "array",
             "optional": false,
             "field": "user",
-            "description": "<p>see <a href=\"#api-Service-user_User_Query\">User Service</a></p>"
+            "description": "<p>see <a href=\"#api-Service-User_Query\">User Service</a></p>"
           }
         ]
       }
     },
-    "filename": "./srv/user/main.go",
+    "filename": "srv/user/main.go",
     "groupTitle": "Service",
     "error": {
       "fields": {
@@ -1039,10 +3079,10 @@ define({ "api": [
   {
     "type": "rpc",
     "url": "/rpc",
-    "title": "user.User.Query",
+    "title": "User.Query",
     "version": "1.0.0",
     "group": "Service",
-    "name": "user_User_Query",
+    "name": "User_Query",
     "description": "<p>Query user info.</p>",
     "parameter": {
       "fields": {
@@ -1051,7 +3091,7 @@ define({ "api": [
             "group": "Parameter",
             "type": "int32",
             "optional": false,
-            "field": "userId",
+            "field": "userID",
             "description": "<p>user id</p>"
           }
         ]
@@ -1064,7 +3104,7 @@ define({ "api": [
             "group": "Success 200",
             "type": "int32",
             "optional": false,
-            "field": "userId",
+            "field": "userID",
             "description": "<p>user id</p>"
           },
           {
@@ -1078,7 +3118,7 @@ define({ "api": [
             "group": "Success 200",
             "type": "string",
             "optional": false,
-            "field": "avatarId",
+            "field": "avatarID",
             "description": "<p>user avatar id</p>"
           },
           {
@@ -1092,7 +3132,7 @@ define({ "api": [
             "group": "Success 200",
             "type": "string",
             "optional": false,
-            "field": "studentId",
+            "field": "studentID",
             "description": "<p>student id</p>"
           },
           {
@@ -1108,11 +3148,18 @@ define({ "api": [
             "optional": false,
             "field": "status",
             "description": "<p>user status, 1 for normal <br> 2 for frozen</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "int32",
+            "optional": false,
+            "field": "role",
+            "description": "<p>user role, 1 for user <br> 10 for admin</p>"
           }
         ]
       }
     },
-    "filename": "./srv/user/main.go",
+    "filename": "srv/user/main.go",
     "groupTitle": "Service",
     "error": {
       "fields": {
@@ -1130,10 +3177,10 @@ define({ "api": [
   {
     "type": "rpc",
     "url": "/rpc",
-    "title": "user.User.Update",
+    "title": "User.Update",
     "version": "1.0.0",
     "group": "Service",
-    "name": "user_User_Update",
+    "name": "User_Update",
     "description": "<p>Update user info, only update provided field. If clearEmpty=1 and param support allow clear, clear the field when not provided.</p>",
     "parameter": {
       "fields": {
@@ -1142,7 +3189,7 @@ define({ "api": [
             "group": "Parameter",
             "type": "int32",
             "optional": false,
-            "field": "userId",
+            "field": "userID",
             "description": "<p>user id</p>"
           },
           {
@@ -1156,7 +3203,7 @@ define({ "api": [
             "group": "Parameter",
             "type": "string",
             "optional": true,
-            "field": "avatarId",
+            "field": "avatarID",
             "description": "<p>user avatar id</p>"
           },
           {
@@ -1170,7 +3217,7 @@ define({ "api": [
             "group": "Parameter",
             "type": "string",
             "optional": true,
-            "field": "studentId",
+            "field": "studentID",
             "description": "<p>student id</p>"
           },
           {
@@ -1186,6 +3233,13 @@ define({ "api": [
             "optional": true,
             "field": "status",
             "description": "<p>user status, 1 for normal <br> 2 for frozen</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "int32",
+            "optional": true,
+            "field": "role",
+            "description": "<p>user role, 1 for user <br> 10 for admin</p>"
           },
           {
             "group": "Parameter",
@@ -1211,7 +3265,7 @@ define({ "api": [
         ]
       }
     },
-    "filename": "./srv/user/main.go",
+    "filename": "srv/user/main.go",
     "groupTitle": "Service",
     "error": {
       "fields": {
@@ -1227,7 +3281,61 @@ define({ "api": [
     }
   },
   {
-    "type": "put",
+    "type": "get",
+    "url": "/tag",
+    "title": "GetTag",
+    "version": "1.0.0",
+    "group": "Tag",
+    "permission": [
+      {
+        "name": "user/admin"
+      }
+    ],
+    "name": "GetTag",
+    "description": "<p>Get AI tag</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "text",
+            "description": "<p>example text</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "list",
+            "optional": false,
+            "field": "tag",
+            "description": "<p>tag list</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "optional": false,
+            "field": "TagServiceDown",
+            "description": "<p>Tag service down</p>"
+          }
+        ]
+      }
+    },
+    "filename": "api/tag/main.go",
+    "groupTitle": "Tag"
+  },
+  {
+    "type": "post",
     "url": "/user",
     "title": "AddUser",
     "version": "1.0.0",
@@ -1247,7 +3355,7 @@ define({ "api": [
             "type": "--",
             "optional": false,
             "field": "Param",
-            "description": "<p>see <a href=\"#api-Service-user_User_Create\">User Service</a></p>"
+            "description": "<p>see <a href=\"#api-Service-User_Create\">User Service</a></p>"
           }
         ]
       }
@@ -1260,13 +3368,23 @@ define({ "api": [
             "type": "Response",
             "optional": false,
             "field": "response",
-            "description": "<p>see <a href=\"#api-Service-user_User_Create\">User Service</a> <br></p>"
+            "description": "<p>see <a href=\"#api-Service-User_Create\">User Service</a></p>"
           }
         ]
       }
     },
+    "filename": "api/user/main.go",
+    "groupTitle": "User",
     "error": {
       "fields": {
+        "Error 400": [
+          {
+            "group": "Error 400",
+            "optional": false,
+            "field": "InvalidParam",
+            "description": "<p>Invalid param</p>"
+          }
+        ],
         "Error 500": [
           {
             "group": "Error 500",
@@ -1276,9 +3394,7 @@ define({ "api": [
           }
         ]
       }
-    },
-    "filename": "./api/user/main.go",
-    "groupTitle": "User"
+    }
   },
   {
     "type": "get",
@@ -1288,7 +3404,7 @@ define({ "api": [
     "group": "User",
     "permission": [
       {
-        "name": "none/admin"
+        "name": "none/self/admin"
       }
     ],
     "name": "FindUser",
@@ -1301,28 +3417,45 @@ define({ "api": [
             "type": "--",
             "optional": false,
             "field": "Param",
-            "description": "<p>see <a href=\"#api-Service-user_User_Find\">User Service</a> <br> No param need admin permission!</p>"
+            "description": "<p>see <a href=\"#api-Service-User_Find\">User Service</a> <br> No param need admin permission!</p>"
           }
         ]
       }
     },
     "success": {
       "fields": {
-        "Success 200": [
+        "None - Success 200": [
           {
-            "group": "Success 200",
+            "group": "None - Success 200",
             "type": "Response",
             "optional": false,
             "field": "response",
-            "description": "<p>see <a href=\"#api-Service-user_User_Find\">User Service</a> <br> None - studentId: hidden <br> None - studentName: hidden</p>"
+            "description": "<p>see <a href=\"#api-Service-User_Find\">User Service</a> <br> studentID: hidden <br> studentName: hidden</p>"
+          }
+        ],
+        "Self/Admin - Success 200": [
+          {
+            "group": "Self/Admin - Success 200",
+            "type": "Response",
+            "optional": false,
+            "field": "response",
+            "description": "<p>see <a href=\"#api-Service-User_Find\">User Service</a></p>"
           }
         ]
       }
     },
-    "filename": "./api/user/main.go",
+    "filename": "api/user/main.go",
     "groupTitle": "User",
     "error": {
       "fields": {
+        "Error 400": [
+          {
+            "group": "Error 400",
+            "optional": false,
+            "field": "InvalidParam",
+            "description": "<p>Invalid param</p>"
+          }
+        ],
         "Error 500": [
           {
             "group": "Error 500",
@@ -1336,13 +3469,13 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/user/:userId",
+    "url": "/user/:userID",
     "title": "GetUserInfo",
     "version": "1.0.0",
     "group": "User",
     "permission": [
       {
-        "name": "none/self"
+        "name": "none/self/admin"
       }
     ],
     "name": "GetUserInfo",
@@ -1355,7 +3488,7 @@ define({ "api": [
             "type": "--",
             "optional": false,
             "field": "Param",
-            "description": "<p>see <a href=\"#api-Service-user_User_Query\">User Service</a></p>"
+            "description": "<p>see <a href=\"#api-Service-User_Query\">User Service</a></p>"
           }
         ]
       }
@@ -1368,24 +3501,32 @@ define({ "api": [
             "type": "Response",
             "optional": false,
             "field": "response",
-            "description": "<p>see <a href=\"#api-Service-user_User_Query\">User Service</a> <br> studentId: hidden <br> studentName: hidden</p>"
+            "description": "<p>see <a href=\"#api-Service-User_Query\">User Service</a> <br> studentID: hidden <br> studentName: hidden</p>"
           }
         ],
-        "Self - Success 200": [
+        "Self/Admin - Success 200": [
           {
-            "group": "Self - Success 200",
+            "group": "Self/Admin - Success 200",
             "type": "Response",
             "optional": false,
             "field": "response",
-            "description": "<p>see <a href=\"#api-Service-user_User_Query\">User Service</a></p>"
+            "description": "<p>see <a href=\"#api-Service-User_Query\">User Service</a></p>"
           }
         ]
       }
     },
-    "filename": "./api/user/main.go",
+    "filename": "api/user/main.go",
     "groupTitle": "User",
     "error": {
       "fields": {
+        "Error 400": [
+          {
+            "group": "Error 400",
+            "optional": false,
+            "field": "InvalidParam",
+            "description": "<p>Invalid param</p>"
+          }
+        ],
         "Error 500": [
           {
             "group": "Error 500",
@@ -1398,7 +3539,7 @@ define({ "api": [
     }
   },
   {
-    "type": "post",
+    "type": "put",
     "url": "/user",
     "title": "UpdateUser",
     "version": "1.0.0",
@@ -1418,7 +3559,7 @@ define({ "api": [
             "type": "--",
             "optional": false,
             "field": "Param",
-            "description": "<p>see <a href=\"#api-Service-user_User_Update\">User Service</a></p>"
+            "description": "<p>see <a href=\"#api-Service-User_Update\">User Service</a> <br> self not allow edit StudentID,StudentName,Status,Role</p>"
           }
         ]
       }
@@ -1431,15 +3572,23 @@ define({ "api": [
             "type": "Response",
             "optional": false,
             "field": "response",
-            "description": "<p>see <a href=\"#api-Service-user_User_Update\">User Service</a></p>"
+            "description": "<p>see <a href=\"#api-Service-User_Update\">User Service</a></p>"
           }
         ]
       }
     },
-    "filename": "./api/user/main.go",
+    "filename": "api/user/main.go",
     "groupTitle": "User",
     "error": {
       "fields": {
+        "Error 400": [
+          {
+            "group": "Error 400",
+            "optional": false,
+            "field": "InvalidParam",
+            "description": "<p>Invalid param</p>"
+          }
+        ],
         "Error 500": [
           {
             "group": "Error 500",
@@ -1450,33 +3599,5 @@ define({ "api": [
         ]
       }
     }
-  },
-  {
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "optional": false,
-            "field": "varname1",
-            "description": "<p>No type.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "varname2",
-            "description": "<p>With type.</p>"
-          }
-        ]
-      }
-    },
-    "type": "",
-    "url": "",
-    "version": "0.0.0",
-    "filename": "./doc/main.js",
-    "group": "_home_imwxz_Documents_code_SJTU_JiaoJiao_backend_doc_main_js",
-    "groupTitle": "_home_imwxz_Documents_code_SJTU_JiaoJiao_backend_doc_main_js",
-    "name": ""
   }
 ] });

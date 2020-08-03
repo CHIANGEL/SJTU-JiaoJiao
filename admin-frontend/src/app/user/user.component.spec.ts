@@ -21,7 +21,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserComponent } from './user.component';
 import { UserService } from '../user.service';
 import { User } from '../entity/user';
-import { CallbackComponent } from '../callback/callback.component';
+import { AuthService } from '../auth.service';
+import { SellInfoComponent } from '../info/sell-info/sell-info.component';
+import { BuyInfoComponent } from '../info/buy-info/buy-info.component';
 
 describe('UserComponent', () => {
   let component: UserComponent;
@@ -38,16 +40,17 @@ describe('UserComponent', () => {
         LoginComponent,
         DashboardComponent,
         WebsiteComponent,
-        CallbackComponent,
         ActivityComponent,
         InfoStatisticComponent,
-        ActivitydetailComponent
+        ActivitydetailComponent,
+        SellInfoComponent,
+        BuyInfoComponent
       ],
-      imports: [   
-    //    DelonAuthModule,
+      imports: [
+        //    DelonAuthModule,
         ReactiveFormsModule,
         BrowserModule,
-        AppRoutingModule,    
+        AppRoutingModule,
         NgZorroAntdModule,
         FormsModule,
         NgxEchartsModule,
@@ -70,6 +73,9 @@ describe('UserComponent', () => {
     expect(component).toBeTruthy();
   });
   it('should deal with page', () => {
+    const service: AuthService = TestBed.get(AuthService);
+    service.login({ token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NjMzMzk3MDYsImlkIjozLCJyb2xlIjoyfQ.woB67gYA8hTMljeg6lqwG_3fSJm4Q7SD6Ln8w2Ol4xk' });
+
     const c = new UserComponent(TestBed.get(UserService));
     expect(c.size).toEqual(4);
     expect(c.current).toEqual(1);
@@ -78,16 +84,11 @@ describe('UserComponent', () => {
     c.size = 2;
     c.current = 1;
     c.threshold = 1;
-    c.curusers = [new User()];
-    c.pageChange(2);
-    expect(c.curusers.length).toEqual(1);
-    c.sizeChange(2);
-    expect(c.curusers.length).toEqual(2);
-    c.forbid();
-    c.delete(new User());
     c.searchName="";
     c.searchByName();
     c.searchName="4396";
     c.searchByName();
+    c.onChange();
+    c.checkcount();
   });
 });

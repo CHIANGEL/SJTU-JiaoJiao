@@ -20,7 +20,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from '../inmemory-data.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CallbackComponent } from '../callback/callback.component';
+import { AuthService } from '../auth.service';
+import { SellInfoComponent } from '../info/sell-info/sell-info.component';
+import { BuyInfoComponent } from '../info/buy-info/buy-info.component';
+import { DelonAuthModule } from '@delon/auth';
 
 describe('ActivitydetailComponent', () => {
   let component: ActivitydetailComponent;
@@ -36,17 +39,19 @@ describe('ActivitydetailComponent', () => {
         InfoDetailComponent,
         LoginComponent,
         DashboardComponent,
-        CallbackComponent,
         WebsiteComponent,
         ActivityComponent,
         InfoStatisticComponent,
-        ActivitydetailComponent
+        ActivitydetailComponent,
+        SellInfoComponent,
+        BuyInfoComponent
       ],
-      imports: [   
-    //    DelonAuthModule,
+      imports: [
+        //import { BuyInfoComponent } from './../info/buy-info/buy-info.component';
+        DelonAuthModule,
         ReactiveFormsModule,
         BrowserModule,
-        AppRoutingModule,    
+        AppRoutingModule,
         NgZorroAntdModule,
         FormsModule,
         NgxEchartsModule,
@@ -56,7 +61,7 @@ describe('ActivitydetailComponent', () => {
         BrowserAnimationsModule
       ],
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -66,6 +71,15 @@ describe('ActivitydetailComponent', () => {
   });
 
   it('should create', () => {
+
     expect(component).toBeTruthy();
+    component.act ={id: 1, title: '新人体验',
+    description: '用户首次发布交易信息可进行申报,要求多媒体数>=1,获得特别加权推荐',
+    releaseTime: 1567957148885, validTime: 1567957148885, 
+    releaseDate: new Date(), validDate:new Date(),weight: 3,
+    pic:1,isNew:true
+    };
+    component.save();
+    component.goBack();
   });
 });
